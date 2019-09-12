@@ -1,0 +1,28 @@
+server:
+  port: 8006
+spring:
+  application:
+    name: spring-cloud-config-server
+  #spring cloud config配置
+  cloud:
+    config:
+      server:
+        git:
+          #git仓库地址
+          uri: https://github.com/waiterlizhihui/spring-boot-demo.git
+          #仓库路径，即文件夹地址
+          searchPaths: /
+          #git参考的用户名和密码，如果是公有库可以不写
+#          username:
+#          password:
+          #分支，默认是master
+          default-label: master
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    #告诉服务端，如果2s之内没有发送心跳包，就代表本服务挂了，可以踢出
+    lease-expiration-duration-in-seconds: 2
+    #每隔1s向服务端发送一次心跳，证明自己依然存活
+    lease-renewal-interval-in-seconds: 1

@@ -1,0 +1,16 @@
+#bootstap.yml文件会在application.yml之前加载，即在服务启动之前加载
+spring:
+  cloud:
+    config:
+      profile: dev
+      label: master
+      #集成了Euraka就不需要用URL获取配置中心了
+#      uri: http://127.0.0.1:8005/
+      discovery:
+        enabled: true
+        #获取配置中心的服务名称
+        service-id: spring-cloud-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/

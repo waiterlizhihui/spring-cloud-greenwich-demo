@@ -1,0 +1,10 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: spring-cloud-eureka-consumer-ribbon
+eureka:
+  client:
+    #指定服务注册中心地址
+    serviceUrl:
+       defaultZone: http://localhost:8000/eureka/

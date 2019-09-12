@@ -1,0 +1,20 @@
+server:
+  port: 8008
+spring:
+  application:
+    #注意：这里的应用名称要和config-server里配置的git的文件的名称一致(比如说这里的配置文件名称为springcloud-config-client-dev.properties)
+    name: spring-cloud-config-client
+management:
+  endpoints:
+    web:
+      exposure:
+        #指定监控选项，默认开启了refresh与health
+        include: refresh,health,info
+      #用于acctutor的监控路径，默认为/actuator
+      base-path: /actuator
+  endpoint:
+    health:
+      #展示监控项详细信息，默认不展示
+      show-details: always
+  server: # 指定actuator端口。如果不指定则与系统服务端口一致。建议修改
+    port: 8888
