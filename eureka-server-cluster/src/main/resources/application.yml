@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: spring-cloud-euraka-server-cluster
+
+--- #三个"-"号的作用相当于将一个分割成了多个文件，在启动的时候将spring.profiles.active=eureka1，就会启动这个配置文件
+spring:
+  profiles: eureka1 #通过指定profile指定启动服务
+  security: #配置注册中心安全验证
+    user:
+      name: admin
+      password: 123456
+
+server:
+  port: 8001
+eureka:
+  server:
+    enable-self-preservation: false #测试时关闭自我保护机制，保证不可以服务及时踢出(生产环境不要打开)
+  instance:
+    hostname: eureka1
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@eureka2:8002/eureka/,http://admin:123456@eureka3:8003/eureka/
+#    fetch-registry: true #表示是否从eureka server获取注册信息，如果是单一节点，不需要同步其他eureka server节点，则可用设置为false，但此处是就请你，应该设置为true，默认值即为true
+#    register-with-eureka: true #表示是否将自己注册到eureka server，集群环境需要，单点不需要，默认为true
+
+--- #三个"-"号的作用相当于将一个分割成了多个文件，在启动的时候将spring.profiles.active=eureka2，就会启动这个配置文件
+spring:
+  profiles: eureka2 #通过指定profile指定启动服务
+  security: #配置注册中心安全验证
+    user:
+      name: admin
+      password: 123456
+
+server:
+  port: 8002
+eureka:
+  server:
+    enable-self-preservation: false #测试时关闭自我保护机制，保证不可以服务及时踢出(生产环境不要打开)
+  instance:
+    hostname: eureka2
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@eureka1:8001/eureka/,http://admin:123456@eureka3:8003/eureka/
+
+--- #三个"-"号的作用相当于将一个分割成了多个文件，在启动的时候将spring.profiles.active=eureka3，就会启动这个配置文件
+spring:
+  profiles: eureka3 #通过指定profile指定启动服务
+  security: #配置注册中心安全验证
+    user:
+      name: admin
+      password: 123456
+
+server:
+  port: 8003
+eureka:
+  server:
+    enable-self-preservation: false #测试时关闭自我保护机制，保证不可以服务及时踢出(生产环境不要打开)
+  instance:
+    hostname: eureka3
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123456@eureka1:8001/eureka/,http://admin:123456@eureka2:8002/eureka/
