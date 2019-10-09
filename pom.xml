@@ -25,9 +25,10 @@
         <module>config-client-autorefresh</module>
         <module>eureka-server-cluster</module>
         <module>gateway</module>
+        <module>gateway-with-eureka</module>
     </modules>
 
-<!--    <dependencies>-->
+    <dependencies>
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter</artifactId>-->
@@ -50,11 +51,11 @@
 <!--            <artifactId>lombok</artifactId>-->
 <!--            <optional>true</optional>-->
 <!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
 <!--        &lt;!&ndash;Spring Cloud依赖&ndash;&gt;-->
 <!--        <dependency>-->
@@ -65,7 +66,7 @@
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>-->
 <!--        </dependency>-->
-<!--    </dependencies>-->
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>

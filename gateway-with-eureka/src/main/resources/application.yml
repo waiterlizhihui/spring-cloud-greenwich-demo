@@ -1,0 +1,25 @@
+server:
+  port: 8097
+
+spring:
+  application:
+    name: spring-cloud-gateway-with-eureka
+  cloud:
+    gateway:
+      routes:
+        - id: service-hi
+          uri: lb://spring-cloud-eureka-service-provider #lb表示负载均衡，spring-cloud-eureka-service-provider是服务提供应用的名称
+          predicates:
+            - Path=/demo/** #拦截所有demo路径下的请求
+          filters:
+            - StripPrefix=1 #将demo路径去掉，达到隐藏真实地址的目的
+  redis:
+    host: localhost
+    port: 6379
+    password: 'zhrt'
+    database: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@eureka1:8001/eureka/,http://admin:123456@eureka2:8002/eureka/,http://admin:123456@eureka3:8003/eureka/

@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8083
 spring:
   application:
     name: spring-cloud-eureka-service-provider
@@ -7,4 +7,7 @@ eureka:
   client:
     #指定服务注册中心地址
     serviceUrl:
-      defaultZone: http://localhost:8000/eureka/
+      #单机模式
+#      defaultZone: http://localhost:8000/eureka/
+      #集群模式
+      defaultZone: http://admin:123456@eureka1:8001/eureka/,http://admin:123456@eureka2:8002/eureka/,http://admin:123456@eureka3:8003/eureka/

@@ -23,4 +23,9 @@ public class EurekaServiceProviderApplication {
     public String hello(String name) {
         return String.format("hello %s,from port = %s", name, port);
     }
+
+    @RequestMapping("/hello/hi")
+    public String  hello2(String name){
+        return String.format("hello %s,from port = %s", name, port);
+    }
 }

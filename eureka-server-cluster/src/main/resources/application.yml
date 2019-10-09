@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: eureka3
   application:
     name: spring-cloud-euraka-server-cluster
 
