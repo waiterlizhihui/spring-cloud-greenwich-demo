@@ -1,0 +1,21 @@
+server:
+  port: 9411
+spring:
+  application:
+    name: spring-cloud-zipkin-server
+  main:
+    allow-bean-definition-overriding: true  #当bean重复定义的时候允许相同key情况下beanDefinition实例的覆盖(如果不配置这个启动的时候会报错)
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false  #解决zipkin后台不能进入的问题，这个配置具体是什么意义待探究https://www.cnblogs.com/sxdcgaq8080/p/10007735.html
+
+# 下面是以jar包的形式(官方提倡用docker启动zipkip服务，而不是自己搭建服务)启动zipkip服务(jar包下载地址https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/)
+# 将日志文件通过rabbitmq存储到mysql时启动zipkin的命令：java -jar zipkin-server-2.12.2-exec.jar --zipkin.collector.rabbitmq.addresses=localhost --zipkin.collector.rabbitmq.username=lbl --zipkin.collector.rabbitmq.password=123456 --STORAGE_TYPE=mysql --MYSQL_HOST=localhost --MYSQL_TCP_PORT=3306 --MYSQL_DB=test --MYSQL_USER=root --MYSQL_PASS=1633212265
+#--注意：zipkin不支持es7.0--
+# 将日志文件通过rabbitmq存储到es是启动zipkip的命令：java -jar zipkin-server-2.12.2-exec.jar --zipkin.collector.rabbitmq.addresses=localhost --STORAGE_TYPE=elasticsearch --ES_HOSTS=http://127.0.0.1:9200

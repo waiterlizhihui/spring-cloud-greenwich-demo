@@ -3,6 +3,24 @@ server:
 spring:
   application:
     name: spring-cloud-eureka-consumer-feign
+  zipkin:
+#    base-url: http://localhost:9411 #http方式提交日志到zipkin，经过测试，提交不到zipkin上，原因待探究
+    sender:
+      type: rabbit  #将日志先发送到rabbitmq
+  sleuth:
+    sampler:  #应采样的请求的频率，取值在1~100,代表采样频率在1%到100%之间。精度仅为整数，即不支持0.1%的取值
+      probability: 1.0
+  rabbitmq:
+    host: localhost
+    port: 5672
+    listener: #配置重试策略
+      direct:
+        retry:
+          enabled: true
+      simple:
+        retry:
+          enabled: true
+
 eureka:
   client:
     serviceUrl:

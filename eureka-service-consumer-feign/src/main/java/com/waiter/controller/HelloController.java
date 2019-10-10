@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * @ClassName HelloController
  * @Description TOOD
@@ -14,11 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloController {
+    private static final Logger LOG  = Logger.getLogger(HelloController.class.getName());
+
     @Autowired
     HelloService helloService;
 
     @RequestMapping("/")
     public String hello(String name) {
+        LOG.log(Level.INFO,"calling trace service-hi");
         return helloService.hello(name);
     }
 }

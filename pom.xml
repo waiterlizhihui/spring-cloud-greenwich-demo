@@ -26,6 +26,7 @@
         <module>eureka-server-cluster</module>
         <module>gateway</module>
         <module>gateway-with-eureka</module>
+        <module>zipkin-server</module>
     </modules>
 
     <dependencies>
@@ -51,11 +52,11 @@
 <!--            <artifactId>lombok</artifactId>-->
 <!--            <optional>true</optional>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
 <!--        &lt;!&ndash;Spring Cloud依赖&ndash;&gt;-->
 <!--        <dependency>-->
