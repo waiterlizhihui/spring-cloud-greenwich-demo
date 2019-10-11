@@ -1,0 +1,12 @@
+#如果要使用nacos config,需要将下面这些配置写在bootstrap文件里
+#DataId+GROUP确定一个nacos配置文件，DataId默认使用spring.application.name配置跟文件扩展名(默认为properties)结合组成
+#GROUP不配置默认为DEFAULT_GROUP,所以本项目对应的nacos里面的配置的DataId为nacos-consumer.yaml,GROUP为DEFAULT_GROUP
+#关于nacos-config的官方文档地址https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-docs/src/main/asciidoc-zh/nacos-config.adoc
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      config: #注意这里和nacos-discovery的区别
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml

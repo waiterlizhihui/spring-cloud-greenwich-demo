@@ -17,6 +17,9 @@ import java.util.logging.Logger;
  */
 @RestController
 public class HelloController {
+    /**
+     * 服务链路最终器需要依赖于Log
+     */
     private static final Logger LOG  = Logger.getLogger(HelloController.class.getName());
 
     @Autowired
